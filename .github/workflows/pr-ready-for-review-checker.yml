@@ -1,4 +1,4 @@
-name: Move PR to ready for review if checks pass
+name: Mark PR to ready for review
 
 permissions:
   # This is needed to move the PR to ready for review
@@ -15,7 +15,7 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  move-pr-to-ready-for-review:
+  mark-pr-to-ready-for-review:
     runs-on: ubuntu-latest
     # Run workflow only when action is triggered by a pull request
     if: ${{ github.event.workflow_run.event == 'pull_request' }}
