@@ -29,5 +29,5 @@ jobs:
         with:
           script: |
               // Move PR to ready for review
-              await exec.getExecOutput(`gh pr ready ${prNumber}`);
+              await exec.getExecOutput(`gh pr ready 2`);
               console.log('🎉 PR successfully moved to ready for review!');
