@@ -1,0 +1,33 @@
+name: Just Test
+
+permissions:
+  # This is needed to move the PR to ready for review
+  contents: read
+  pull-requests: write
+
+on:
+  workflow_run:
+    # This is the list of workflows that we want to monitor
+    workflows: ["Lint check", "Format check"]
+    types: [completed]
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  just-test:
+    runs-on: ubuntu-latest
+    # Run workflow only when action is triggered by a pull request
+    if: ${{ github.event.workflow_run.event == 'pull_request' }}
+    steps:
+      # Checkout repository, Github CLI fail without this
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Just Test
+        uses: actions/github-script@v7
+        with:
+          script: |
+              // Move PR to ready for review
+              await exec.getExecOutput(`gh pr ready ${prNumber}`);
+              console.log('🎉 PR successfully moved to ready for review!');
