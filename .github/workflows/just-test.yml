@@ -2,7 +2,7 @@ name: Just Test
 
 permissions:
   # This is needed to move the PR to ready for review
-  contents: read
+  contents: write
   pull-requests: write
 
 on:
