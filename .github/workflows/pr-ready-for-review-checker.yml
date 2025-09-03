@@ -1,10 +1,5 @@
 name: Mark PR to ready for review
 
-permissions:
-  # This is needed to move the PR to ready for review
-  contents: write
-  pull-requests: write
-
 on:
   workflow_run:
     # This is the list of workflows that we want to monitor
