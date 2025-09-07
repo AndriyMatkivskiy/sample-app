@@ -4,8 +4,6 @@ permissions:
   # This is needed to move the PR to ready for review
   contents: write
   pull-requests: write
-  checks: read
-  statuses: read
 
 on:
   workflow_run:
